@@ -1,24 +1,34 @@
+{% load static %}
 <html>
     <head>
         <title>Mustafir blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="/">Великолепный Блог</a></h1>
         </div>
         
-        {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h2><a href="">{{ post.title }} </a></h2>
-            <p>{{ post.text|linebreaksbr}}</p>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>Опубликовано: {{ post.published_date }}</p>
+                            </div>
+                            <h1><a href="">{{ post.title }}</a></h1>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        {% endfor %}
 
-        <div>
-            <p>published: 24.02.2023, 12:14</p>
-            <h2><a href="">Плюсы быть злодеем </a></h2>
-            <p>Даже если ваша история – не романтический триллер, злодей вам может пригодиться. Попробуйте только представить типичный сюжет без злых родственников, загружающих героиню бессмысленной и тяжелой работой! Конфликт может не быть таким напряженным без кого-то, кто противостоит героине. Властная свекровь или испорченная кузина могут быть не менее злыми, чем Злой Властелин. Я думаю, что большинство драгдиллеров и мафиози струсили бы, повстречай они на узкой дорожке злых родственников из редженси. Я собрала некоторые типичные ошибки, которые делают многие писатели, создавая своих злодеев. </p>
-        </div>
+        
+        
     </body>
 </html>
